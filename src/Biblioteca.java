@@ -43,6 +43,44 @@ public class Biblioteca {
         this.nombreBiblioteca = nombreBiblioteca;
     }
 
+    public boolean agregarLibro(String nombre, String autor, String editorial, String ISBN){
+        if(buscarLibro(nombre, autor, editorial, ISBN) == null){
+            Libro libro = new Libro(nombre, autor, editorial, ISBN);
+            this.libros.add(libro);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public Libro buscarLibro(String nombre, String autor, String editorial, String ISBN){
+        for(Libro libro : this.libros){
+            if(libro.getISBN().equals(ISBN) && libro.dameNombre().equals(nombre)&& libro.dameAutor().equals(autor)&&libro.dameEditorial().equals(editorial)) {
+                return libro;
+            }
+        }
+        return null;
+    }
+
+
+
+    public List<Libro> buscarLibroPorAutor(String autor){
+        List<Libro> librosAutor = new ArrayList<Libro>();
+        for(Libro libro : this.libros){
+            if(libro.dameAutor().equals(autor))
+                librosAutor.add(libro);
+        }
+        return librosAutor;
+    }
+
+
+
+
+    public void libroExiste(){
+
+
+    }
+
 
 
 }
