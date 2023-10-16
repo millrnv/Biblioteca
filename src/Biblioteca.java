@@ -76,9 +76,14 @@ public class Biblioteca {
 
 
 
-    public void libroExiste(){
-
-
+    public boolean libroExiste(String nombre, String autor, String editorial, String ISBN){
+        if (buscarLibro(nombre, autor, editorial, ISBN) == null){
+            System.out.println("EL libro no existe en la biblioteca");
+        }
+        else{
+            System.out.println("El libro se encuentra en la biblioteca");
+        }
+        return true;
     }
 
 
