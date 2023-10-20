@@ -53,6 +53,10 @@ class Libro {
 
     }
 
+    public String toString(){
+        return "Nombre: " +nombre+ "\n Autor: " +autor+ "\n Editorial: " +editorial;
 
-
+    }
 }
+
+

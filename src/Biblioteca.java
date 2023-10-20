@@ -43,52 +43,45 @@ public class Biblioteca {
         this.nombreBiblioteca = nombreBiblioteca;
     }
 
-    public boolean agregarLibro(String nombre, String autor, String editorial, String ISBN){
-        if(buscarLibro(nombre, autor, editorial, ISBN) == null){
-            Libro libro = new Libro(nombre, autor, editorial, ISBN);
+    public boolean agregarLibro(Libro libro) {
+        if (!libroExiste(libro)) {
             this.libros.add(libro);
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    public Libro buscarLibro(String nombre, String autor, String editorial, String ISBN){
-        for(Libro libro : this.libros){
-            if(libro.getISBN().equals(ISBN) && libro.dameNombre().equals(nombre)&& libro.dameAutor().equals(autor)&&libro.dameEditorial().equals(editorial)) {
+
+    public Libro buscarLibro(String nombre) {
+        for (Libro libro : this.libros) {
+            if (libro.dameNombre().equals(nombre)) {
                 return libro;
             }
         }
+
         return null;
     }
 
-
-
-    public List<Libro> buscarLibroPorAutor(String autor){
+    public List<Libro> buscarLibroPorAutor(String autor) {
         List<Libro> librosAutor = new ArrayList<Libro>();
-        for(Libro libro : this.libros){
-            if(libro.dameAutor().equals(autor))
+        for (Libro libro : this.libros) {
+            if (libro.dameAutor().equals(autor))
                 librosAutor.add(libro);
         }
         return librosAutor;
     }
-
-
-
-
-    public boolean libroExiste(String nombre, String autor, String editorial, String ISBN){
-        if (buscarLibro(nombre, autor, editorial, ISBN) == null){
-            System.out.println("EL libro no existe en la biblioteca");
+    public boolean libroExiste(Libro libro){
+        for(Libro l : this.libros) {
+            if(libro.getISBN().equals(l.getISBN())) {
+                return true;
+            }
         }
-        else{
-            System.out.println("El libro se encuentra en la biblioteca");
-        }
-        return true;
+
+        return false;
     }
-
-
-
 }
+
+
 
 
 
