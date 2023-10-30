@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Biblioteca {
@@ -6,6 +7,10 @@ public class Biblioteca {
     private List<Libro> libros;        //lista de libros
     private String nombreBiblioteca;
     private String direccion;
+
+    private List<Prestamo> prestamos;
+    private List<Usuario> usuarios;
+    private List<Bibliotecario> bibliotecarios;
 
 
 
@@ -15,6 +20,10 @@ public class Biblioteca {
         this.nombreBiblioteca = nombreBiblioteca;
         this.direccion = direccion;
         this.libros = new ArrayList<>();
+        this.prestamos = new ArrayList<>();
+        this.usuarios = new ArrayList<>();
+        this.bibliotecarios = new ArrayList<>();
+
 
     }
 
@@ -33,6 +42,20 @@ public class Biblioteca {
 
     public void setLibros(List<Libro> libros) {
         this.libros = libros;
+    }
+
+    public void setBibliotecarios(List<Bibliotecario> bibliotecarios){
+        this.bibliotecarios = bibliotecarios;
+
+    }
+
+    public void setPrestamos(List<Prestamo> prestamos){
+        this.prestamos = prestamos;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios){
+        this.usuarios = usuarios;
+
     }
 
     public void setDireccion(String direccion) {
@@ -78,7 +101,33 @@ public class Biblioteca {
         }
 
         return false;
+
     }
+
+    public void generarPrestamo(Bibliotecario bibliotecario, Usuario usuario, Libro libro, Date fechaInicio, Date fechaTermino) {
+        if (!libroExiste(libro)) {
+            System.out.println("El libro no existe en la biblioteca.");
+            return;
+        }
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getLibro().equals(libro)) {
+                System.out.println("El libro ya está prestado.");
+                return;
+            }
+        }
+        Prestamo nuevoPrestamo = new Prestamo(bibliotecario, usuario, libro, fechaInicio, fechaTermino);
+        prestamos.add(nuevoPrestamo);
+    }
+
+
+        }
+
+
+
+
+    }
+
+
 }
 
 
