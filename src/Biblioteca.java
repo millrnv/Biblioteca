@@ -13,9 +13,8 @@ public class Biblioteca {
     private List<Bibliotecario> bibliotecarios;
 
 
-
     //constructor insertando parametros de nombreBiblioteca y direccion
-    public Biblioteca(String nombreBiblioteca, String direccion){
+    public Biblioteca(String nombreBiblioteca, String direccion) {
 
         this.nombreBiblioteca = nombreBiblioteca;
         this.direccion = direccion;
@@ -31,11 +30,11 @@ public class Biblioteca {
         return this.libros;
     }
 
-    public String getNombreBiblioteca(){
+    public String getNombreBiblioteca() {
         return this.nombreBiblioteca;
     }
 
-    public String getDireccion(){
+    public String getDireccion() {
         return this.direccion;
 
     }
@@ -44,16 +43,16 @@ public class Biblioteca {
         this.libros = libros;
     }
 
-    public void setBibliotecarios(List<Bibliotecario> bibliotecarios){
+    public void setBibliotecarios(List<Bibliotecario> bibliotecarios) {
         this.bibliotecarios = bibliotecarios;
 
     }
 
-    public void setPrestamos(List<Prestamo> prestamos){
+    public void setPrestamos(List<Prestamo> prestamos) {
         this.prestamos = prestamos;
     }
 
-    public void setUsuarios(List<Usuario> usuarios){
+    public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
 
     }
@@ -93,9 +92,10 @@ public class Biblioteca {
         }
         return librosAutor;
     }
-    public boolean libroExiste(Libro libro){
-        for(Libro l : this.libros) {
-            if(libro.getISBN().equals(l.getISBN())) {
+
+    public boolean libroExiste(Libro libro) {
+        for (Libro l : this.libros) {
+            if (libro.getISBN().equals(l.getISBN())) {
                 return true;
             }
         }
@@ -120,15 +120,14 @@ public class Biblioteca {
     }
 
 
-        }
-
-
-
-
-    }
-
-
 }
+
+
+
+
+
+
+
 
 
 
